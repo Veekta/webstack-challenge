@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+Kuimport React, { useState } from "react";
 import ProfileIcon from "../assets/profileIcon.svg";
 import getPhotoUrl from "get-photo-url";
 import { useLiveQuery } from "dexie-react-hooks";
@@ -87,9 +87,8 @@ const Bio = () => {
         <div className="profile-info" key={detail.id}>
           <p className="name">{detail?.name}</p>
           <p className="about">{detail?.about}</>
-    <div className="profile-info">
         {editFormIsOpen ? editForm : editButton}
-      </div>
+     
         </div>
       ))}
   
