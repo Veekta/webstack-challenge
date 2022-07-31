@@ -6,7 +6,7 @@ import Loading from "../components/LoadingState";
 
 const Gallery = () => {
   // const [allPhotos, setAllPhotos] = useState([]);
-  const allPhotos = useLiveQuery(() => db.gallery.toArray(), []);
+  const allPhotos = useLiveQuery(() => db.gallery.reverse().toArray(), []);
 
   // const addPhoto = async () => {
   //   const newPhoto = {
@@ -23,6 +23,9 @@ const Gallery = () => {
   };
   const removePhoto = (id) => {
     db.gallery.delete(id);
+  };
+  const clearPhotos = (id) => {
+    db.gallery.clear(id);
   };
 
   return (

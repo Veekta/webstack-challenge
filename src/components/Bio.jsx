@@ -1,4 +1,4 @@
-Kuimport React, { useState } from "react";
+import React, { useState } from "react";
 import ProfileIcon from "../assets/profileIcon.svg";
 import getPhotoUrl from "get-photo-url";
 import { useLiveQuery } from "dexie-react-hooks";
@@ -13,13 +13,12 @@ const Bio = () => {
   // });
 
   const [editFormIsOpen, setEditFormIsOpen] = useState(false);
-  const [profilePhoto, setProfilePhoto] = useState(ProfileIcon);
+  // const [profilePhoto, setProfilePhoto] = useState(ProfileIcon);
 
-<<<<<<< HEAD
-  const userDetails = useLiveQuery(() => db.bio.get);
-=======
-  const userDetails = useLiveQuery(() => db.bio.get[]);
->>>>>>> 2842ec2e52e16e0a83a42df2272895090c421ff5
+  const userDetails = useLiveQuery(() => db.bio.get("info"), []);
+
+  const profilePhoto = useLiveQuery(() => db.bio.get("profilePhoto"), []);
+
   const updateUserDetails = async (event) => {
     event.preventDefault();
     const objectData = {
@@ -32,22 +31,23 @@ const Bio = () => {
 
   const updateProfilePhoto = async () => {
     const newProfilePhoto = await getPhotoUrl("#profilePhotoInput");
-    setProfilePhoto(newProfilePhoto);
+    // setProfilePhoto(newProfilePhoto);
     await db.bio.put(newProfilePhoto, "profilePhoto");
   };
 
   const editButton = (
     <button onClick={() => setEditFormIsOpen(true)}>Edit</button>
   );
-  useEffect(() => {
-    const setDataFromDb = async () => {
-      // const userDetailsFromDb = await db.bio.get("info");
-      // userDetailsFromDb && setUserDetails(userDetailsFromDb);
-      const profilePhotoFromDb = await db.bio.get("profilePhoto");
-      profilePhotoFromDb && setProfilePhoto(profilePhotoFromDb);
-    };
-    setDataFromDb();
-  }, []);
+
+  // useEffect(() => {
+  //   const setDataFromDb = async () => {
+  //     const userDetailsFromDb = await db.bio.get("info");
+  //     userDetailsFromDb && setUserDetails(userDetailsFromDb);
+  //     const profilePhotoFromDb = await db.bio.get("profilePhoto");
+  //     profilePhotoFromDb && setProfilePhoto(profilePhotoFromDb);
+  //   };
+  //   setDataFromDb();
+  // }, []);
 
   const editForm = (
     <form className="edit-bio-form" onSubmit={(e) => updateUserDetails(e)}>
@@ -87,25 +87,11 @@ const Bio = () => {
           <img src={profilePhoto} alt="profile" />
         </div>
       </label>
-<<<<<<< HEAD
-      {/* {userDetails?.map((detail) => ( */}
       <div className="profile-info">
         <p className="name">{userDetails?.name}</p>
         <p className="about">{userDetails?.about}</p>
         {editFormIsOpen ? editForm : editButton}
       </div>
-      {/* ))} */}
-=======
-      {userDetails?.map((detail) => (
-        <div className="profile-info" key={detail.id}>
-          <p className="name">{detail?.name}</p>
-          <p className="about">{detail?.about}</>
-        {editFormIsOpen ? editForm : editButton}
-     
-        </div>
-      ))}
-  
->>>>>>> 2842ec2e52e16e0a83a42df2272895090c421ff5
     </section>
   );
 };

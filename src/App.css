@@ -75,7 +75,7 @@ nav {
 }
 
 .bio {
-  width: 85%;
+  width: 90%;
   font-family: Arial, Helvetica, sans-serif;
   border-bottom: 0.2px solid hsl(0, 0%, 86%);
   margin-top: 5em;
@@ -114,13 +114,6 @@ nav {
 
 .profile-photo img:hover {
   opacity: 0.7;
-}
-.profile-info2 {
-  margin-left: 70px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2em;
-  width: 500px;
 }
 
 .profile-info {
@@ -207,6 +200,13 @@ nav {
 }
 
 .add-photo-button {
+  transform: scale(3);
+  position: fixed;
+  bottom: 5em;
+  right: 7em;
+  cursor: pointer;
+}
+.clear-photo-button {
   transform: scale(3);
   position: fixed;
   bottom: 5em;
