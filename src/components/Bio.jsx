@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+Kuimport React, { useState } from "react";
 import ProfileIcon from "../assets/profileIcon.svg";
 import getPhotoUrl from "get-photo-url";
 import { useLiveQuery } from "dexie-react-hooks";
@@ -15,7 +15,11 @@ const Bio = () => {
   const [editFormIsOpen, setEditFormIsOpen] = useState(false);
   const [profilePhoto, setProfilePhoto] = useState(ProfileIcon);
 
+<<<<<<< HEAD
   const userDetails = useLiveQuery(() => db.bio.get);
+=======
+  const userDetails = useLiveQuery(() => db.bio.get[]);
+>>>>>>> 2842ec2e52e16e0a83a42df2272895090c421ff5
   const updateUserDetails = async (event) => {
     event.preventDefault();
     const objectData = {
@@ -83,6 +87,7 @@ const Bio = () => {
           <img src={profilePhoto} alt="profile" />
         </div>
       </label>
+<<<<<<< HEAD
       {/* {userDetails?.map((detail) => ( */}
       <div className="profile-info">
         <p className="name">{userDetails?.name}</p>
@@ -90,6 +95,17 @@ const Bio = () => {
         {editFormIsOpen ? editForm : editButton}
       </div>
       {/* ))} */}
+=======
+      {userDetails?.map((detail) => (
+        <div className="profile-info" key={detail.id}>
+          <p className="name">{detail?.name}</p>
+          <p className="about">{detail?.about}</>
+        {editFormIsOpen ? editForm : editButton}
+     
+        </div>
+      ))}
+  
+>>>>>>> 2842ec2e52e16e0a83a42df2272895090c421ff5
     </section>
   );
 };
