@@ -15,7 +15,7 @@ const Bio = () => {
   const [editFormIsOpen, setEditFormIsOpen] = useState(false);
   const [profilePhoto, setProfilePhoto] = useState(ProfileIcon);
 
-  const userDetails = useLiveQuery(() => db.bio.toArray(), []);
+  const userDetails = useLiveQuery(() => db.bio.get);
   const updateUserDetails = async (event) => {
     event.preventDefault();
     const objectData = {
@@ -83,15 +83,13 @@ const Bio = () => {
           <img src={profilePhoto} alt="profile" />
         </div>
       </label>
-      {userDetails?.map((detail) => (
-        <div className="profile-info" key={detail.id}>
-          <p className="name">{detail?.name}</p>
-          <p className="about">{detail?.about}</p>
-        </div>
-      ))}
+      {/* {userDetails?.map((detail) => ( */}
       <div className="profile-info">
+        <p className="name">{userDetails?.name}</p>
+        <p className="about">{userDetails?.about}</p>
         {editFormIsOpen ? editForm : editButton}
       </div>
+      {/* ))} */}
     </section>
   );
 };

@@ -115,6 +115,14 @@ nav {
 .profile-photo img:hover {
   opacity: 0.7;
 }
+.profile-info2 {
+  margin-left: 70px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  width: 500px;
+}
+
 .profile-info {
   margin-left: 70px;
   display: flex;
