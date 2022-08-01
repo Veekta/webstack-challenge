@@ -8,6 +8,16 @@ const Gallery = () => {
   // const [allPhotos, setAllPhotos] = useState([]);
   const allPhotos = useLiveQuery(() => db.gallery.reverse().toArray(), []);
 
+  const [open, setOpen] = useState(false);
+
+  const modalOpen = () => {
+    setOpen(true);
+  };
+
+  const modalClose = () => {
+    setOpen(false);
+  };
+
   // const addPhoto = async () => {
   //   const newPhoto = {
   //     id: Date.now(),
@@ -34,8 +44,45 @@ const Gallery = () => {
       <label htmlFor="addPhotoInput" onClick={addPhoto}>
         <i className="add-photo-button fas fa-plus-square"></i>
       </label>
+
+      <label htmlFor="clear">
+        {open ? (
+          <div className="modal">
+            <div className="modal-delete">Delete Message</div>
+
+            <div className="main">
+              <p>Are you sure you want to clear all photos?</p>
+            </div>
+            <div className="clear-control">
+              <button onClick={modalClose} className="close-button">
+                Cancel
+              </button>
+              <button
+                className="Yes"
+                onClick={() => {
+                  clearPhotos();
+                  modalClose();
+                }}
+              >
+                Yes Delete It!
+              </button>
+            </div>
+          </div>
+        ) : null}
+        {allPhotos?.length > 0 ? (
+          <div className="top-gallery">
+            <p>Gallery</p>
+            <i
+              className="clear-button fas fa-times"
+              onClick={() => modalOpen()}
+            ></i>
+          </div>
+        ) : null}
+      </label>
+
       <section className="gallery">
         {!allPhotos && <Loading />}
+        {allPhotos?.length <= 0 ? <p>No Photo In Gallery</p> : null}
         {allPhotos?.map((photo) => (
           <div className="item" key={photo.id}>
             <img src={photo.url} className="item-image" alt="" />

@@ -150,6 +150,10 @@ nav {
   .profile-info .about {
     text-align: center;
   }
+  .modal {
+    top: 70%;
+    right: 25%;
+  }
 }
 
 .profile-info .name {
@@ -257,4 +261,80 @@ nav {
 
 .item:hover .delete-button {
   opacity: 1;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 220px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  height: 150px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+}
+.modal_header {
+  background: rgba(55, 17, 222);
+  width: inherit;
+  height: inherit;
+  padding: 10px 20px;
+  display: flex;
+}
+.close-button {
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+  background-color: #0095f6;
+  height: 35px;
+  width: 60px;
+}
+.Yes {
+  padding: 10px;
+  background-color: #890000;
+  height: 35px;
+  color: white;
+}
+.close-button:hover {
+  color: yellow;
+}
+.delete-button:hover {
+  background-color: #670000;
+  color: white;
+}
+.clear-control {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  justify-content: space-around;
+}
+.main {
+  width: 90%;
+  text-align: center;
+}
+.modal-delete {
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.clear-control button {
+  margin-bottom: 10px;
+}
+.top-gallery {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-gallery p {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.9);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+.main p {
+  font-size: 14px;
 }
