@@ -84,7 +84,11 @@ const Bio = () => {
       <input type="file" accept="image/*" name="photo" id="profilePhotoInput" />
       <label htmlFor="profilePhotoInput" onClick={updateProfilePhoto}>
         <div className="profile-photo" role="button" title="Click to edit">
-          <img src={profilePhoto} alt="profile" />
+          {profilePhoto ? (
+            <img src={profilePhoto} alt="profile" />
+          ) : (
+            <img src={ProfileIcon} alt="profile" />
+          )}
         </div>
       </label>
       <div className="profile-info">
