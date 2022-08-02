@@ -92,8 +92,16 @@ const Bio = () => {
         </div>
       </label>
       <div className="profile-info">
-        <p className="name">{userDetails?.name}</p>
-        <p className="about">{userDetails?.about}</p>
+        {userDetails ? (
+          <p className="name">{userDetails?.name}</p>
+        ) : (
+          <p className="about">Name</p>
+        )}
+        {userDetails ? (
+          <p className="about">{userDetails?.about}</p>
+        ) : (
+          <p className="about">About</p>
+        )}
         {editFormIsOpen ? editForm : editButton}
       </div>
     </section>
